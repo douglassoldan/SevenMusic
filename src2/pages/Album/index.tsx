@@ -1,6 +1,5 @@
 import React, {useState, useEffect} from 'react';
-import {ScrollView} from 'react-native';
-import Icon from 'react-native-vector-icons/FontAwesome5';
+import {ScrollView, Text} from 'react-native';
 import {
   Container,
   ContainerHeader,
@@ -24,7 +23,7 @@ import {
   MusicListening,
   ContainerSubtitle,
   SubtitleTitle,
-  SubtitleDescription
+  SubtitleDescription,
 } from './styles';
 
 // import musics from './music.json';
@@ -32,10 +31,6 @@ import TabBar from '../../components/TabBar';
 
 const Album = props => {
   const [detail, setDetail] = useState({});
-  const [iconConfigure] = useState({
-    size: 16,
-    color: '#fff',
-  });
 
   useEffect(() => {
     // console.log('props inside album, screen ******* ',props);
@@ -46,12 +41,15 @@ const Album = props => {
   const goBack = () => {
     props.navigation.pop();
   };
-  
-  let ownerName = detail && detail.owner && detail.owner.display_name ? detail.owner.display_name : ''
+
+  let ownerName =
+    detail && detail.owner && detail.owner.display_name
+      ? detail.owner.display_name
+      : '';
   return (
     <Container>
       <ContainerNavBar>
-        <Icon onPress={() => props.navigation.goBack()} name="arrow-left" {...iconConfigure} />
+        <Text>Left</Text>
       </ContainerNavBar>
 
       <ContainerHeader>
@@ -65,9 +63,7 @@ const Album = props => {
       <Content>
         <ContainerSubtitle>
           <SubtitleTitle>Name: {detail.name}</SubtitleTitle>
-          <SubtitleDescription>
-            {detail.description}
-          </SubtitleDescription>
+          <SubtitleDescription>{detail.description}</SubtitleDescription>
         </ContainerSubtitle>
 
         <ContainerSubtitle>

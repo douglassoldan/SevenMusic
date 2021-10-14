@@ -1,14 +1,14 @@
 import React, {useState, useEffect} from 'react';
-import {Text, View, ImageBackground, FlatList} from 'react-native';
+import {View, ImageBackground, FlatList, LogBox, Text} from 'react-native';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import axios from 'axios';
 
-import {MainNavigationProp} from '../../routing/types';
-import {MainRoutes} from '../../routing/routes';
 import authHandler from '../../auth/authHandler';
 import SlideCard from '../../models/SlideCard/SlideCard';
 
 import styles from './PlaylistsStyles';
+
+LogBox.ignoreLogs(['Sending']);
 
 const header = require('../../images/header.jpeg');
 
@@ -30,18 +30,15 @@ type PlaylistsProps = {
 export default function Playlists({
   navigation,
 }: PlaylistsProps): React.ReactElement {
-  const [slides, setSlides] = useState([]);
+  const [slides, setSlides] = useState([] as any[]);
 
   const onFetchSlides = async () => {
     await authHandler.onLogin();
 
-    // console.log('authstate ******* ',authHandler)
     const dataFromAuth = await AsyncStorage.getItem('authData');
     const token = dataFromAuth;
 
-    // console.log('token ******* ',dataFromAuth)
     if (token) {
-      console.log('token inside playlist api ******* ', token);
       axios
         .get(
           'https://api.spotify.com/v1/users/21b6424uzt4ir7xxqgckuz6ti/playlists',
@@ -66,27 +63,24 @@ export default function Playlists({
   }, []);
 
   const goAlbumScreen = (item: any) => {
-    // console.warn(item);
     navigation.navigate('Player', {album: item});
   };
 
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.background} source={header}>
-        <View style={styles.global} />
+        <View style={styles.global}>
+          <Text style={styles.title}>Playlists</Text>
+        </View>
         <View style={styles.header} />
       </ImageBackground>
       <FlatList
         showsHorizontalScrollIndicator={false}
         horizontal={false}
         data={slides}
-        keyExtractor={item => String(item)}
+        keyExtractor={item => item.id}
         renderItem={({item, index}) => (
-          <SlideCard
-            // key={item.id}
-            slide={item}
-            goAlbum={goAlbumScreen}
-          />
+          <SlideCard key={item} slide={item} goAlbum={goAlbumScreen} />
         )}
       />
     </View>

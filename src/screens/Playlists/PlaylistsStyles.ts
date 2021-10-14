@@ -24,5 +24,12 @@ export default StyleSheet.create({
   },
   global: {
     flex: 1,
+    justifyContent: 'flex-end',
+    alignItems: 'center',
+    paddingBottom: 10,
+  },
+  title: {
+    fontSize: 20,
+    color: colors.white,
   },
 });

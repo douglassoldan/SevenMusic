@@ -22,20 +22,18 @@ export default StyleSheet.create({
     borderTopRightRadius: 60,
     borderWidth: 1,
     borderColor: colors.backgroundBlue,
+    justifyContent: 'center',
+    alignItems: 'center',
   },
   containerSpotify: {
     flex: 4,
     justifyContent: 'flex-start',
     backgroundColor: colors.backgroundBlue,
   },
-  containerNavBar: {
-    height: '50%',
-    justifyContent: 'space-between',
-  },
   content: {
     flex: 1,
     alignItems: 'center',
-    marginTop: 20,
+    marginTop: 0,
   },
   containerSubtitle: {
     flexDirection: 'column',
@@ -43,14 +41,15 @@ export default StyleSheet.create({
     paddingHorizontal: 0,
   },
   subtitleTitle: {
-    color: colors.textLight,
+    color: colors.white,
     fontWeight: 'bold',
-    fontSize: 14,
+    fontSize: 18,
     paddingVertical: 2,
     paddingHorizontal: 0,
   },
   subtitleDescription: {
     color: colors.textLight,
-    fontSize: 12,
+    fontSize: 16,
+    textAlign: 'center',
   },
 });

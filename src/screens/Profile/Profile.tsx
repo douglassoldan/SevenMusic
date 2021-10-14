@@ -23,14 +23,12 @@ export default function Profile({
   return (
     <View style={styles.container}>
       <ImageBackground style={styles.background} source={header}>
-        <View style={styles.global} />
+        <View style={styles.global}>
+          <Text style={styles.title}>Perfil</Text>
+        </View>
         <View style={styles.header} />
       </ImageBackground>
-      <Text>Criar perfil do usuário aqui</Text>
-      <Button
-        title="settings"
-        onPress={() => navigation.navigate(MainRoutes.Settings)}
-      />
+      <Text>Seja bem vindo!</Text>
       <Button title="Sair" onPress={() => logoutHandler()} />
     </View>
   );

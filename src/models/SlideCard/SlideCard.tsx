@@ -7,8 +7,7 @@ import {View, Text, FlatList} from 'react-native';
 const SlideCard = ({slide, goAlbum}: any) => {
   const arr = [];
   arr.push(slide);
-
-  console.log('card item ******* ', arr);
+  // console.log('card item ******* ', arr);
 
   return (
     <View style={styles.container}>

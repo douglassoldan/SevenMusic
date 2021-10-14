@@ -66,6 +66,7 @@ const MainNavigation = (): React.ReactElement => {
   return (
     <NavigationContainer ref={navigationRef}>
       <MainStack.Navigator
+        initialRouteName={MainRoutes.Splash}
         screenOptions={{
           headerShown: false,
         }}>

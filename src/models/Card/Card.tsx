@@ -8,6 +8,7 @@ const Card = ({itens, ...props}: any) => {
     itens.images && itens.images[0] && itens.images[0].url !== undefined
       ? itens.images[0].url
       : '';
+
   return (
     <View style={styles.container}>
       <TouchableOpacity activeOpacity={0.5} onPress={props.onPress}>

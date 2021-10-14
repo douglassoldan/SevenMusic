@@ -15,10 +15,10 @@ import AppCheckScreen from '../../screens/InitStack/AppCheck';
 import Login from '../../screens/Login/Login';
 import RegisterScreen from '../../screens/Register/Register';
 import AppLoadingScreen from '../../screens/AppLoading/AppLoading';
-import HomeScreen from '../../screens/Playlists/Playlists';
+import Playlists from '../../screens/Playlists/Playlists';
 import Profile from '../../screens/Profile/Profile';
-import HomeScreenC from '../../screens/AppStack/Player';
-import SettingsScreen from '../../screens/AppStack/SettingsScreen';
+import Player from '../../screens/Player/Player';
+// import SettingsScreen from '../../screens/AppStack/SettingsScreen';
 
 import styles from './MainNavigationStyles';
 
@@ -37,15 +37,14 @@ const Home = () => (
     />
     <HomeTabs.Screen
       name={HomeRoutes.Playlists}
-      component={HomeScreen}
+      component={Playlists}
       options={{title: 'Playlists'}}
     />
-
-    <HomeTabs.Screen
+    {/* <HomeTabs.Screen
       name={HomeRoutes.Player}
-      component={HomeScreenC}
+      component={Player}
       options={{title: 'Player'}}
-    />
+    /> */}
   </HomeTabs.Navigator>
 );
 
@@ -74,8 +73,10 @@ const MainNavigation = (): React.ReactElement => {
           <>
             <MainStack.Screen name={MainRoutes.Home} component={Home} />
             <MainStack.Screen
-              name={MainRoutes.Settings}
-              component={SettingsScreen}
+              name={MainRoutes.Player}
+              // name={MainRoutes.Settings}
+              component={Player}
+              // component={SettingsScreen}
             />
           </>
         ) : (

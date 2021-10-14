@@ -24,7 +24,7 @@ const config = {
 };
 
 type PlaylistsProps = {
-  navigation: MainNavigationProp<MainRoutes.Home>;
+  navigation: any;
 };
 
 export default function Playlists({
@@ -43,13 +43,16 @@ export default function Playlists({
     if (token) {
       console.log('token inside playlist api ******* ', token);
       axios
-        .get('https://api.spotify.com/v1/users/wizzler/playlists', {
-          headers: {
-            Accept: 'application/json',
-            'Content-Type': 'application/json',
-            Authorization: 'Bearer ' + token,
+        .get(
+          'https://api.spotify.com/v1/users/21b6424uzt4ir7xxqgckuz6ti/playlists',
+          {
+            headers: {
+              Accept: 'application/json',
+              'Content-Type': 'application/json',
+              Authorization: 'Bearer ' + token,
+            },
           },
-        })
+        )
         .then(result => {
           console.log('result music ****** ', result);
           setSlides(result.data.items);
@@ -77,7 +80,7 @@ export default function Playlists({
         showsHorizontalScrollIndicator={false}
         horizontal={false}
         data={slides}
-        keyExtractor={item => String(item.id)}
+        keyExtractor={item => String(item)}
         renderItem={({item, index}) => (
           <SlideCard
             // key={item.id}

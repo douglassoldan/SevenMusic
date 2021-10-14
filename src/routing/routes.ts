@@ -13,13 +13,14 @@ export enum MainRoutes {
   // App Stack
   AppLoading = 'AppLoading', // Load User Data for signed in users
   Home = 'Home', // The first "real" page of the app, now a set of tabs
-  Settings = 'Settings', // Default Settings Page
+  Player = 'Player', // Default Settings Page
+  // Settings = 'Settings', // Default Settings Page
 }
 
 export enum HomeRoutes {
-  Profile = 'Profile', // demo B for nesting
-  Playlists = 'Playlists', // demo A for nesting
-  Player = 'Player', // demo C for nesting
+  Profile = 'Profile', //First page
+  Playlists = 'Playlists', //Second page
+  // Player = 'Player',
 }
 
 export type MainStackParamList = {
@@ -34,13 +35,14 @@ export type MainStackParamList = {
   // App Stack
   [MainRoutes.AppLoading]: undefined;
   [MainRoutes.Home]: undefined;
-  [MainRoutes.Settings]: undefined;
+  [MainRoutes.Player]: undefined;
+  // [MainRoutes.Settings]: undefined;
 };
 
 export type HomeTabsParamList = {
   [HomeRoutes.Profile]: undefined;
   [HomeRoutes.Playlists]: {update: boolean} | undefined; // just an example, "update" will later be used for version checks
-  [HomeRoutes.Player]: undefined;
+  // [HomeRoutes.Player]: undefined;
 };
 
 export const MainStack = createStackNavigator<MainStackParamList>();
